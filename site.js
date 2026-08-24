@@ -48,6 +48,15 @@
     var unpinButton = header.querySelector('.vector-pinnable-header-unpin-button');
     if (!element || !pinnedContainer || !unpinnedContainer) { return; }
 
+    // Some panels (e.g. Main menu, Tools) render pin controls even though
+    // pinning is marked "-disabled": their sidebar slot is force-hidden by
+    // CSS, so moving content there makes it disappear. Hide the inert
+    // controls instead of wiring them up.
+    if (root.classList.contains(feature + '-disabled')) {
+      header.style.display = 'none';
+      return;
+    }
+
     function setPinned(pinned) {
       root.classList.remove(feature + '-clientpref-0', feature + '-clientpref-1');
       root.classList.add(feature + '-clientpref-' + (pinned ? '1' : '0'));
