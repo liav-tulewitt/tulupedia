@@ -2,7 +2,7 @@
   var FEATURES = {
     'vector-feature-custom-font-size': ['0', '1', '2'],
     'vector-feature-limited-width': ['1', '0'],
-    'skin-theme': ['day', 'night', 'os']
+    'skin-theme': ['day', 'night', 'os', 'tulu']
   };
   var root = document.documentElement;
   var saved = {};
