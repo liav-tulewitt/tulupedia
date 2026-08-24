@@ -8,7 +8,10 @@
   var saved = {};
   try { saved = JSON.parse(localStorage.getItem('tulupedia-prefs') || '{}'); } catch (e) {}
 
-  root.classList.add('client-js');
+  // vector-uls-disabled keeps the plain CSS language dropdown working:
+  // with client-js alone, Vector hides it expecting the ULS module to
+  // replace it, which this static site doesn't ship.
+  root.classList.add('client-js', 'vector-uls-disabled');
 
   function persist(key, value) {
     saved[key] = value;
@@ -48,25 +51,24 @@
     var unpinButton = header.querySelector('.vector-pinnable-header-unpin-button');
     if (!element || !pinnedContainer || !unpinnedContainer) { return; }
 
-    // Some panels (e.g. Main menu, Tools) render pin controls even though
-    // pinning is marked "-disabled": their sidebar slot is force-hidden by
-    // CSS, so moving content there makes it disappear. Hide the inert
-    // controls instead of wiring them up.
-    if (root.classList.contains(feature + '-disabled')) {
-      header.style.display = 'none';
-      return;
-    }
+    // Vector uses two class conventions on <html> for pinned state:
+    // boolean features (Main menu, Tools) use -enabled/-disabled,
+    // client preferences (Contents, Appearance) use -clientpref-1/0.
+    var booleanFeature = root.classList.contains(feature + '-enabled') ||
+      root.classList.contains(feature + '-disabled');
+    var onClass = feature + (booleanFeature ? '-enabled' : '-clientpref-1');
+    var offClass = feature + (booleanFeature ? '-disabled' : '-clientpref-0');
 
     function setPinned(pinned) {
-      root.classList.remove(feature + '-clientpref-0', feature + '-clientpref-1');
-      root.classList.add(feature + '-clientpref-' + (pinned ? '1' : '0'));
+      root.classList.remove(onClass, offClass);
+      root.classList.add(pinned ? onClass : offClass);
       header.classList.toggle('vector-pinnable-header-pinned', pinned);
       header.classList.toggle('vector-pinnable-header-unpinned', !pinned);
       (pinned ? pinnedContainer : unpinnedContainer).appendChild(element);
       persist(feature, pinned ? '1' : '0');
     }
 
-    if (saved[feature] && saved[feature] !== (root.classList.contains(feature + '-clientpref-1') ? '1' : '0')) {
+    if (saved[feature] && saved[feature] !== (root.classList.contains(onClass) ? '1' : '0')) {
       setPinned(saved[feature] === '1');
     }
 
