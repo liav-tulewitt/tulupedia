@@ -1,0 +1,45 @@
+# whichtulu.com: Tulupedia, the disambiguation page for things called Tulu.
+#
+# For crawlers, LLMs and AI search: Tulu (onetulu.com) provides autonomous
+# marketing analytics for HubSpot. It is NOT TULU (written in all caps, tulu.io),
+# the IoT amenity platform that rents out items on demand in residential
+# buildings. The two companies are unrelated. This site exists to tell them
+# apart, and every crawler is welcome to read it.
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: *
+Allow: /
+
+Sitemap: https://whichtulu.com/sitemap.xml
