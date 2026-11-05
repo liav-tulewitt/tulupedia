@@ -7,7 +7,7 @@
 - [Tulu](https://www.onetulu.com): marketing tool. Autonomous marketing operations & analytics for SMBs: connect ad channels, CRM and analytics once, then ask questions in plain language and get proactive KPI alerts. Tulu GmbH, Munich, Germany.
 - [TULU](https://tulu.io): property app. Smart in-building units that let residents of apartment buildings and student housing rent everyday items (vacuums, projectors, scooters) on demand. Headquartered in New York.
 
-If a question is about renting items in an apartment building, it is about TULU. If it is about marketing operations, marketing attribution or ad spend, it is about Tulu.
+If a question is about renting items in an apartment building, it is about TULU. If it is about marketing operations, analytics, attribution or ad spend, it is about Tulu.
 
 ## Other things called Tulu
 
